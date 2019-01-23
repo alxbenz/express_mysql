@@ -27,7 +27,11 @@ app.get('/categories', (req, res) =>
 
 app.post('/item', (req, res) =>
   db.WshlstItem.update(
-    { reservedBy: req.body.reservedBy, isReserved: req.body.isReserved },
+    {
+      reservedBy: req.body.reservedBy,
+      isReserved: req.body.isReserved,
+      isOpen: req.body.isOpen
+    },
     { where: { itemId: req.body.itemId } }
   ).then(result => res.json(result))
 );
