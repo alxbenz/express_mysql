@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-node": "^6.5.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
     "faker": "^4.1.0",
     "lodash.random": "^3.2.0",
     "lodash.times": "^4.3.2",
