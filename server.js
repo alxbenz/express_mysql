@@ -4,6 +4,8 @@ const faker = require('faker');
 const times = require('lodash.times');
 const random = require('lodash.random');
 const db = require('./models');
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/config/config.json')[env];
 
 const port = process.env.PORT;
 
@@ -11,7 +13,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('app/public'));
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', config.corsOrigin);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
