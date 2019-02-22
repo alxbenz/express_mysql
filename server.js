@@ -5,6 +5,8 @@ const times = require('lodash.times');
 const random = require('lodash.random');
 const db = require('./models');
 
+const port = process.env.PORT;
+
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static('app/public'));
@@ -56,6 +58,30 @@ app.post('/bnzstgrm/new', (req, res) => {
   });
 });
 
+app.post('/bnzstgrm/remove', (req, res) => {
+  db.BnzstgrmPosts.destroy({ where: { postId: req.body.postId } }).then(
+    entry => {
+      res.json(req.body.postId);
+      console.log(res);
+    }
+  );
+});
+
+app.post('/bnzstgrm/update', (req, res) => {
+  db.BnzstgrmPosts.find({ where: { postId: req.body.postId } }).then(entry => {
+    entry
+      .update({
+        headline: req.body.headline,
+        text: req.body.text,
+        date: req.body.date,
+        tags: req.body.tags
+      })
+      .then(result => {
+        res.json(result);
+      });
+  });
+});
+
 db.sequelize.sync().then(() => {
   // DEMO CONTENT
   //   db.WshlstCategory.bulkCreate(
@@ -92,5 +118,5 @@ db.sequelize.sync().then(() => {
   //     }))
   //   );
 
-  app.listen(4000, () => console.log('App listening on port 4000!'));
+  app.listen(port, () => console.log(`App listening on port ${port}!`));
 });
