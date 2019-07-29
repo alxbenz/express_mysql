@@ -27,16 +27,16 @@ app.use((req, res, next) => {
   const [login, password] = new Buffer(b64auth, 'base64').toString().split(':');
 
   // Verify login and password are set and correct
-  if (
-    !login ||
-    !password ||
-    login !== auth.login ||
-    password !== auth.password
-  ) {
-    res.set('WWW-Authenticate', 'Basic realm="401"'); // change this
-    res.status(401).send('Authentication required.'); // custom message
-    return;
-  }
+  // if (
+  //   !login ||
+  //   !password ||
+  //   login !== auth.login ||
+  //   password !== auth.password
+  // ) {
+  //   res.set('WWW-Authenticate', 'Basic realm="401"'); // change this
+  //   res.status(401).send('Authentication required.'); // custom message
+  //   return;
+  // }
 
   // Access granted...
   next();

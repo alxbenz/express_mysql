@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       tags: {
         type: DataTypes.STRING
       },
+      // TODO rename to media source // TODO rename in DB
       imageSrc: {
         type: DataTypes.STRING,
         allowNull: false
