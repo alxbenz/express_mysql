@@ -1,4 +1,4 @@
-/config
+/config/config.json
 server.apollo.js
 schema.js
 resolvers.js

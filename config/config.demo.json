@@ -1,0 +1,27 @@
+{
+    "development": {
+      "username": "dbuser",
+      "password": "dbpwd",
+      "database": "dbname",
+      "host": "dbhost",
+      "dialect": "mysql",
+      "corsOrigin": "http://localhost:3000",
+      "httpuser": "http user",
+      "httppwd": "http pwd",
+      "authpwd": "app auth pwd"
+    },
+    "production": {
+        "username": "dbuser",
+        "password": "dbpwd",
+        "database": "dbname",
+        "host": "dbhost",
+        "dialect": "mysql",
+        "corsOrigin": "http://localhost:3000",
+        "httpuser": "http user",
+        "httppwd": "http pwd",
+        "authpwd": "app auth pwd"
+    }
+  } 
+  
+  
+  
