@@ -20,11 +20,11 @@ app.use((req, res, next) => {
   }
   // authentication middleware
 
-  const auth = { login: config.httpuser, password: config.httppwd };
+  // const auth = { login: config.httpuser, password: config.httppwd };
 
   // parse login and password from headers
-  const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
-  const [login, password] = new Buffer(b64auth, 'base64').toString().split(':');
+  // const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
+  // const [login, password] = new Buffer(b64auth, 'base64').toString().split(':');
 
   // Verify login and password are set and correct
   // if (
@@ -42,7 +42,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', config.corsOrigin);
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
 
   // intercept OPTIONS method
   if (req.method === 'OPTIONS') {
-    res.send(200);
+    res.sendStatus(200);
   } else {
     next();
   }
@@ -122,6 +122,15 @@ app.post('/bnzstgrm/update', (req, res) => {
       });
   });
 });
+
+app.post('/bnzstgrm/auth', (req, res) => {
+  let auth = 'INVALID';
+  if (req.body.password == config.authpwd) {
+    auth = 'VALID';
+  }
+  return res.send({ auth: auth });
+});
+
 
 db.sequelize.sync().then(() => {
   // DEMO CONTENT
