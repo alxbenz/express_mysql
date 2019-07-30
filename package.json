@@ -17,7 +17,7 @@
     "lodash.random": "^3.2.0",
     "lodash.times": "^4.3.2",
     "nodemon": "^1.18.9",
-    "sequelize-cli": "^5.4.0",
+    "sequelize-cli": "^5.5.0",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1"
   },
